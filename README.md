@@ -81,26 +81,9 @@ aic-amal/
 ├── next.config.js  # Next.js configuration
 ├── package.json    # Project metadata and dependencies
 └── README.md       # This file
-📝 Documentation
-Components
-DonationMetrics: Displays key metrics such as total donations, active campaigns, and new donations.
-CampaignProgress: Shows progress and donations for ongoing and upcoming campaigns.
-SponsorshipOverview: Provides an overview of active sponsorships and contributions.
-VolunteerActivity: Displays volunteer activity logs and performance metrics.
-RecentDonations: Lists recent donations with donor information and amounts.
-AgentPerformance: Tracks the performance of agents, including collections and distribution.
-Charts
-BarChart: Displays bar charts for donations over time.
-PieChart: Shows pie charts for sponsorship distributions.
-LineChart: Illustrates line charts for campaign progress.
-🤝 Contributing
-Contributions are welcome! Please follow these steps:
-Fork the repository.
-Create a new branch: git checkout -b my-feature
-Make your changes and commit them: git commit -am 'Add new feature'
-Push to the branch: git push origin my-feature
-Submit a pull request.
-📞 Support
-For any questions or issues, please open a GitHub issue.
-📜 License
+
+## 📞 Support
+For any questions or issues, please open a GitHub issue. or mail hello@salmanmp.me
+
+## 📜 License
 All rights reserved, Connect with me
