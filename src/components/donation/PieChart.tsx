@@ -21,7 +21,7 @@ const PieChart = () => {
     responsive: true,
     plugins: {
       legend: {
-        position: "top",
+        position: "top" as const, // Ensure the position is one of the allowed values
         labels: {
           color: "#333", // Light mode text color
           font: {
