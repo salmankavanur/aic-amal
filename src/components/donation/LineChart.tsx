@@ -1,4 +1,4 @@
-"use client"; 
+"use client";
 import React from "react";
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS, CategoryScale, LinearScale, LineElement, PointElement, Tooltip, Legend } from "chart.js";
@@ -24,7 +24,7 @@ const LineChart = () => {
     responsive: true,
     plugins: {
       legend: {
-        position: "top",
+        position: "top" as const, // Ensures TypeScript knows that "top" is a valid option
       },
     },
   };
