@@ -12,13 +12,13 @@ export default function SidebarWidget() {
         Manage and track your agents' activities and collections.
       </p>
       <a
-        href="/agents/login"
-        target="_self"
-        rel="noopener noreferrer"
-        className="flex items-center justify-center p-3 font-medium text-white rounded-lg bg-brand-500 text-sm hover:bg-brand-600"
-      >
-        Agent Login
-      </a>
+  href="/agents/login"
+  target="_self"
+  rel="noopener noreferrer"
+  className="flex items-center justify-center p-3 font-medium text-white rounded-lg bg-brand-500 text-sm hover:bg-brand-600"
+>
+  Agent Login
+</a>
     </div>
   );
 }
