@@ -42,5 +42,5 @@ package-lock.json
 yarn.lock
 
 # Additional files to ignore
-.env
-package.json
+# .env
+# package.json
