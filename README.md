@@ -2,8 +2,10 @@ Certainly! Below is a modern and customized README.md template for your donation
 markdownCopy
 # 🌟 AIC Amal Donation App 🌟
 
+# 🌟 AIC Amal Donation App 🌟
+
 <div align="center">
-  <img src="path/to/your/logo.png" alt="Logo" width="100" height="auto">
+  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/26223477/415710707-4181b450-0cc5-4b52-af07-dfb6c093c2f2.png" alt="AIC Amal Logo" width="200">
   <h1>Efficient Donation Management System</h1>
   <p>A modern, user-friendly platform for managing donations, campaigns, and volunteer activities.</p>
 </div>
