@@ -3,7 +3,8 @@ markdownCopy
 # 🌟 AIC Amal Donation App 🌟
 
 <div align="center">
-  <img src="path/to/your/logo.png" alt="Logo" width="100" height="auto">
+ ![image](https://github.com/user-attachments/assets/2358d332-26ed-44f0-966a-9031cde3480f)
+
   <h1>Efficient Donation Management System</h1>
   <p>A modern, user-friendly platform for managing donations, campaigns, and volunteer activities.</p>
 </div>
