@@ -2,8 +2,6 @@ Certainly! Below is a modern and customized README.md template for your donation
 markdownCopy
 # 🌟 AIC Amal Donation App 🌟
 
-# 🌟 AIC Amal Donation App 🌟
-
 <div align="center">
   <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/26223477/415710707-4181b450-0cc5-4b52-af07-dfb6c093c2f2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250221%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250221T151138Z&X-Amz-Expires=300&X-Amz-Signature=f1099c91e643f113c9231914e17d619849f6494b987235a0fce52e7099fced5b&X-Amz-SignedHeaders=host" alt="AIC Amal Logo" width="200">
   <h1>Efficient Donation Management System</h1>
