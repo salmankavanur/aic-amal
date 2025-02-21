@@ -1,5 +1,4 @@
-Certainly! Below is a modern and customized README.md template for your donation app project. This template includes emojis, code examples, and detailed guides to help users understand and use your project effectively.
-markdownCopy
+
 # 🌟 AIC Amal Donation App 🌟
 
 <div align="center">
