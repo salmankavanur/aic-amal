@@ -16,6 +16,17 @@ module.exports = {
       ...defaultTheme.screens,
     },
     extend: {
+      animation: {
+        'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'float': 'float 8s ease-in-out infinite',
+        'float-slow': 'float 12s ease-in-out infinite',
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-20px)' },
+        }
+      },
       fontSize: {
         "title-2xl": ["72px", "90px"],
         "title-xl": ["60px", "72px"],

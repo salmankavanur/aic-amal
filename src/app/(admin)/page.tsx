@@ -11,6 +11,7 @@ import AgentPerformance from "@/components/donation/AgentPerformance";
 import BarChart from "@/components/donation/BarChart";
 import PieChart from "@/components/donation/PieChart";
 import LineChart from "@/components/donation/LineChart";
+import BackgroundEffects from "@/components/backgroundEffects/BackgroundEffects";
 
 export const metadata: Metadata = {
   title: "Donation App Dashboard | AIC Amal Donation App",
@@ -22,7 +23,9 @@ export default function DonationDashboard() {
   const adminName = "Salman";
 
   return (
+    
     <div className="p-6 space-y-6">
+      <BackgroundEffects />
       {/* Page Header */}
       <div className="flex justify-between items-center">
         {/* Greeting Message */}
@@ -59,18 +62,18 @@ export default function DonationDashboard() {
         </div>
 
         {/* Charts Row */}
-        <div className="col-span-12 xl:col-span-4 bg-white dark:bg-gray-800 shadow-md rounded-lg p-4">
-          <h3 className="text-lg font-semibold text-gray-800 dark:text-white">Donations Overview</h3>
+        <div className="col-span-12 xl:col-span-4 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-xl">
+          {/* <h3 className="text-lg font-semibold text-gray-800 dark:text-white">Donations Overview</h3> */}
           <BarChart />
         </div>
 
-        <div className="col-span-12 xl:col-span-4 bg-white dark:bg-gray-800 shadow-md rounded-lg p-4">
-          <h3 className="text-lg font-semibold text-gray-800 dark:text-white">Campaign Distribution</h3>
+        <div className="col-span-12 xl:col-span-4 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-xl">
+          {/* <h3 className="text-lg font-semibold text-gray-800 dark:text-white">Campaign Distribution</h3> */}
           <PieChart />
         </div>
 
-        <div className="col-span-12 xl:col-span-4 bg-white dark:bg-gray-800 shadow-md rounded-lg p-4">
-          <h3 className="text-lg font-semibold text-gray-800 dark:text-white">Donations Trend</h3>
+        <div className="col-span-12 xl:col-span-4 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 shadow-xl">
+          {/* <h3 className="text-lg font-semibold text-gray-800 dark:text-white">Donations Trend</h3> */}
           <LineChart />
         </div>
 
