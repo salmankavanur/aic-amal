@@ -1,7 +1,6 @@
 // src/app/(admin)/donations/receipts/page.tsx
 "use client";
 import React, { useState } from "react";
-import Link from "next/link";
 
 export default function GenerateReceiptsPage() {
   // States for filters and search

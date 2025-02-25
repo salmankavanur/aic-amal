@@ -1,13 +1,14 @@
 // src/app/(admin)/donations/detail/page.tsx
 "use client";
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from 'next/navigation';
 
-export default function DetailedViewPage() {
+// Move the main component logic into a separate component
+function DonationDetailContent() {
   const searchParams = useSearchParams();
   const donationId = searchParams.get('id') || 'DON-7845';
-  
+
   // Mock data - in a real app, you would fetch this based on the ID
   const donationData = {
     id: donationId,
@@ -35,14 +36,14 @@ export default function DetailedViewPage() {
       program: "Yatheem Sponsorship Program"
     }
   };
-  
+
   // State for receipt display
   const [showReceipt, setShowReceipt] = useState(false);
-  
+
   // Status badge component
   const StatusBadge = ({ status }: { status: string }) => {
     let bgColor = "bg-gray-500/20 text-gray-500";
-    
+
     if (status === "Completed") {
       bgColor = "bg-green-500/20 text-green-500";
     } else if (status === "Pending") {
@@ -50,7 +51,7 @@ export default function DetailedViewPage() {
     } else if (status === "Failed") {
       bgColor = "bg-red-500/20 text-red-500";
     }
-    
+
     return (
       <span className={`px-3 py-1 rounded-full ${bgColor} text-sm font-medium`}>
         {status}
@@ -70,15 +71,15 @@ export default function DetailedViewPage() {
             View complete information about this donation
           </p>
         </div>
-        
+
         <div className="flex gap-2">
-          <Link 
-            href="/donations/all" 
+          <Link
+            href="/donations/all"
             className="px-4 py-2 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 text-sm font-medium hover:bg-white/20 transition-all duration-300"
           >
             Back to List
           </Link>
-          <button 
+          <button
             onClick={() => setShowReceipt(!showReceipt)}
             className="px-4 py-2 bg-gradient-to-r from-emerald-500 to-green-500 text-white rounded-lg text-sm font-medium hover:from-emerald-600 hover:to-green-600 transition-all duration-300"
           >
@@ -86,7 +87,7 @@ export default function DetailedViewPage() {
           </button>
         </div>
       </div>
-      
+
       {/* Main content grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Donor Information */}
@@ -126,7 +127,7 @@ export default function DetailedViewPage() {
             </div>
           </div>
         </div>
-        
+
         {/* Donation Details */}
         <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-xl">
           <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4 pb-2 border-b border-white/10">
@@ -169,7 +170,7 @@ export default function DetailedViewPage() {
             </div>
           </div>
         </div>
-        
+
         {/* Recipient & Actions */}
         <div className="space-y-6">
           <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-xl">
@@ -191,7 +192,7 @@ export default function DetailedViewPage() {
               </div>
             </div>
           </div>
-          
+
           <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-xl">
             <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4 pb-2 border-b border-white/10">
               Actions
@@ -213,12 +214,12 @@ export default function DetailedViewPage() {
           </div>
         </div>
       </div>
-      
+
       {/* Receipt Preview (conditionally rendered) */}
       {showReceipt && (
         <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-xl">
           <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">Receipt Preview</h3>
-          
+
           <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 max-w-2xl mx-auto">
             {/* Organization Logo */}
             <div className="flex justify-between items-start mb-8">
@@ -242,7 +243,7 @@ export default function DetailedViewPage() {
                 </p>
               </div>
             </div>
-            
+
             {/* Donation Details */}
             <div className="mb-8">
               <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">Donation Information</h4>
@@ -277,7 +278,7 @@ export default function DetailedViewPage() {
                 </div>
               </div>
             </div>
-            
+
             {/* Thank you message */}
             <div className="text-center mb-6">
               <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
@@ -287,20 +288,20 @@ export default function DetailedViewPage() {
                 AIC Amal Charitable Trust - Your support makes a difference.
               </p>
             </div>
-            
+
             {/* QR Code Placeholder */}
             <div className="flex justify-center mb-4">
               <div className="w-24 h-24 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center">
                 <span className="text-xs text-gray-500 dark:text-gray-400">QR Code</span>
               </div>
             </div>
-            
+
             {/* Note */}
             <p className="text-xs text-center text-gray-500 dark:text-gray-400 italic">
               This receipt is electronically generated and is valid without signature.
             </p>
           </div>
-          
+
           {/* Receipt Actions */}
           <div className="flex justify-center mt-6 space-x-4">
             <button className="px-4 py-2 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 text-sm font-medium hover:bg-white/20 transition-all duration-300">
@@ -316,5 +317,14 @@ export default function DetailedViewPage() {
         </div>
       )}
     </div>
+  );
+}
+
+// Wrap the main component in a Suspense boundary
+export default function DetailedViewPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <DonationDetailContent />
+    </Suspense>
   );
 }
