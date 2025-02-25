@@ -5,6 +5,7 @@ import AppHeader from "@/layout/AppHeader";
 import AppSidebar from "@/layout/AppSidebar";
 import Backdrop from "@/layout/Backdrop";
 import React from "react";
+import BackgroundEffects from "@/components/backgroundEffects/BackgroundEffects";
 
 export default function AdminLayout({
   children,
@@ -25,6 +26,7 @@ export default function AdminLayout({
       {/* Sidebar and Backdrop */}
       <AppSidebar />
       <Backdrop />
+      <BackgroundEffects />
       {/* Main Content Area */}
       <div
         className={`flex-1 transition-all  duration-300 ease-in-out ${mainContentMargin}`}

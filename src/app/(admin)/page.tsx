@@ -11,7 +11,7 @@ import AgentPerformance from "@/components/donation/AgentPerformance";
 import BarChart from "@/components/donation/BarChart";
 import PieChart from "@/components/donation/PieChart";
 import LineChart from "@/components/donation/LineChart";
-import BackgroundEffects from "@/components/backgroundEffects/BackgroundEffects";
+
 
 export const metadata: Metadata = {
   title: "Donation App Dashboard | AIC Amal Donation App",
@@ -25,7 +25,6 @@ export default function DonationDashboard() {
   return (
     
     <div className="p-6 space-y-6">
-      <BackgroundEffects />
       {/* Page Header */}
       <div className="flex justify-between items-center">
         {/* Greeting Message */}
