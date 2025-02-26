@@ -8,14 +8,14 @@ const mockCampaigns = [
 
 export default function EditCampaignPage() {
   const [campaigns, setCampaigns] = useState(mockCampaigns);
-  const [selectedCampaignId, setSelectedCampaignId] = useState("CMP-001");
+  const [selectedCampaignId, setSelectedCampaignId] = useState<string>(mockCampaigns[0]?.id || "");
   const [updatedCampaign, setUpdatedCampaign] = useState({
     name: mockCampaigns[0].name,
     description: mockCampaigns[0].description,
   });
 
   // Handle selection of a campaign
-  const handleSelectCampaign = (e) => {
+  const handleSelectCampaign = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedId = e.target.value;
     setSelectedCampaignId(selectedId);
     const selectedCampaign = campaigns.find((campaign) => campaign.id === selectedId);
@@ -23,7 +23,7 @@ export default function EditCampaignPage() {
   };
 
   // Handle input change
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setUpdatedCampaign({ ...updatedCampaign, [name]: value });
   };
