@@ -2,17 +2,27 @@
 import React, { useState } from "react";
 import { Edit, Trash2, Plus, X } from "lucide-react";
 
-const mockUpcomingCampaigns = [
+// Define Campaign Type
+type Campaign = {
+  id: string;
+  name: string;
+  description: string;
+  startDate: string;
+};
+
+// Mock Data
+const mockUpcomingCampaigns: Campaign[] = [
   { id: "CMP-003", name: "Quran Distribution", description: "Distribute copies of the Quran worldwide.", startDate: "2024-04-10" },
   { id: "CMP-004", name: "New Orphan Sponsorship Program", description: "Support orphans with education and living needs.", startDate: "2024-05-15" },
 ];
 
 export default function UpcomingCampaignsPage() {
-  const [campaigns, setCampaigns] = useState(mockUpcomingCampaigns);
+  const [campaigns, setCampaigns] = useState<Campaign[]>(mockUpcomingCampaigns);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [selectedCampaign, setSelectedCampaign] = useState(null);
-  const [newCampaign, setNewCampaign] = useState({
+  const [selectedCampaign, setSelectedCampaign] = useState<Campaign | null>(null);
+  const [newCampaign, setNewCampaign] = useState<Campaign>({
+    id: "",
     name: "",
     description: "",
     startDate: "",
@@ -21,18 +31,18 @@ export default function UpcomingCampaignsPage() {
   // Open Add Modal
   const openAddModal = () => {
     setIsModalOpen(true);
-    setNewCampaign({ name: "", description: "", startDate: "" });
+    setNewCampaign({ id: "", name: "", description: "", startDate: "" });
   };
 
-  // Open Edit Modal
-  const openEditModal = (campaign) => {
+  // Open Edit Modal (Fixed Type Issue)
+  const openEditModal = (campaign: Campaign) => {
     setIsEditModalOpen(true);
     setSelectedCampaign(campaign);
     setNewCampaign({ ...campaign });
   };
 
-  // Handle input change
-  const handleChange = (e) => {
+  // Handle Input Change (Fixed Type Issue)
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setNewCampaign({ ...newCampaign, [name]: value });
   };
@@ -44,7 +54,7 @@ export default function UpcomingCampaignsPage() {
       return;
     }
 
-    const newEntry = {
+    const newEntry: Campaign = {
       id: `CMP-${Math.floor(Math.random() * 1000)}`,
       name: newCampaign.name,
       description: newCampaign.description,
@@ -57,6 +67,8 @@ export default function UpcomingCampaignsPage() {
 
   // Edit Campaign
   const handleEditCampaign = () => {
+    if (!selectedCampaign) return;
+
     setCampaigns(
       campaigns.map((campaign) =>
         campaign.id === selectedCampaign.id ? { ...selectedCampaign, ...newCampaign } : campaign
@@ -65,8 +77,8 @@ export default function UpcomingCampaignsPage() {
     setIsEditModalOpen(false);
   };
 
-  // Delete Campaign
-  const handleDelete = (id) => {
+  // Delete Campaign (Fixed Type Issue)
+  const handleDelete = (id: string) => {
     if (confirm("Are you sure you want to delete this campaign?")) {
       setCampaigns(campaigns.filter((campaign) => campaign.id !== id));
     }
@@ -77,10 +89,7 @@ export default function UpcomingCampaignsPage() {
       {/* Header */}
       <div className="flex justify-between items-center">
         <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Upcoming Campaigns</h2>
-        <button
-          onClick={openAddModal}
-          className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
-        >
+        <button onClick={openAddModal} className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
           <Plus className="h-5 w-5" /> Add Campaign
         </button>
       </div>
@@ -88,10 +97,7 @@ export default function UpcomingCampaignsPage() {
       {/* Campaigns List */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {campaigns.map((campaign) => (
-          <div
-            key={campaign.id}
-            className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg transition hover:shadow-xl border border-gray-200 dark:border-gray-700"
-          >
+          <div key={campaign.id} className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg transition hover:shadow-xl border border-gray-200 dark:border-gray-700">
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{campaign.name}</h3>
             <p className="text-gray-600 dark:text-gray-400">{campaign.description}</p>
             <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">
@@ -100,16 +106,10 @@ export default function UpcomingCampaignsPage() {
 
             {/* Action Buttons */}
             <div className="mt-4 flex justify-between">
-              <button
-                onClick={() => openEditModal(campaign)}
-                className="flex items-center gap-2 px-3 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
-              >
+              <button onClick={() => openEditModal(campaign)} className="flex items-center gap-2 px-3 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">
                 <Edit className="h-4 w-4" /> Edit
               </button>
-              <button
-                onClick={() => handleDelete(campaign.id)}
-                className="flex items-center gap-2 px-3 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
-              >
+              <button onClick={() => handleDelete(campaign.id)} className="flex items-center gap-2 px-3 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition">
                 <Trash2 className="h-4 w-4" /> Delete
               </button>
             </div>
@@ -122,9 +122,7 @@ export default function UpcomingCampaignsPage() {
         <div className="fixed inset-0 bg-black/50 backdrop-blur-md flex items-center justify-center z-50 p-4">
           <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-2xl max-w-lg w-full">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                {isEditModalOpen ? "Edit Campaign" : "Add New Campaign"}
-              </h3>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white">{isEditModalOpen ? "Edit Campaign" : "Add New Campaign"}</h3>
               <button onClick={() => (isEditModalOpen ? setIsEditModalOpen(false) : setIsModalOpen(false))} className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
                 <X className="h-5 w-5 text-gray-700 dark:text-gray-300" />
               </button>
