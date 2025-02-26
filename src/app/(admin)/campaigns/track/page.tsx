@@ -9,10 +9,9 @@ const mockCampaigns = [
 ];
 
 export default function TrackProgressPage() {
-  const [campaigns, setCampaigns] = useState(mockCampaigns);
   const [selectedCampaignId, setSelectedCampaignId] = useState(mockCampaigns[0]?.id || "");
 
-  const selectedCampaign = campaigns.find((campaign) => campaign.id === selectedCampaignId);
+  const selectedCampaign = mockCampaigns.find((campaign) => campaign.id === selectedCampaignId);
 
   return (
     <div className="p-6 space-y-6">
@@ -28,7 +27,7 @@ export default function TrackProgressPage() {
           onChange={(e) => setSelectedCampaignId(e.target.value)}
           className="w-full p-3 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white border rounded-lg focus:ring-2 focus:ring-purple-500"
         >
-          {campaigns.map((campaign) => (
+          {mockCampaigns.map((campaign) => (
             <option key={campaign.id} value={campaign.id}>
               {campaign.name}
             </option>
