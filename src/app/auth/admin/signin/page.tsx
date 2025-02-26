@@ -30,8 +30,21 @@ export default function SignInForm() {
     });
 
     if (result?.error) {
+      console.log("SignIn error:", result.error);
       setLoading(false);
-      setError(result.error);
+      let errorMessage = "An error occurred during sign-in";
+      switch (result.error) {
+        case "Missing credentials":
+          errorMessage = "Please enter both email and password";
+          break;
+        case "No account found with this email":
+          errorMessage = "No account exists with this email";
+          break;
+        case "Invalid password":
+          errorMessage = "Incorrect password";
+          break;
+      }
+      setError(errorMessage);
       return;
     }
 
@@ -127,7 +140,7 @@ export default function SignInForm() {
                   <Label>
                     Email <span className="text-error-500">*</span>{" "}
                   </Label>
-                  <Input placeholder="info@gmail.com" type="email" />
+                  <Input onChange={(e)=>{setEmail(e.target.value)}} placeholder="info@gmail.com" type="email" />
                 </div>
                 <div>
                   <Label>
@@ -135,6 +148,7 @@ export default function SignInForm() {
                   </Label>
                   <div className="relative">
                     <Input
+                       onChange={(e)=>{setPassword(e.target.value)}}
                       type={showPassword ? "text" : "password"}
                       placeholder="Enter your password"
                     />
